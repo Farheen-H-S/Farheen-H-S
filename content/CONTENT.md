@@ -15,7 +15,7 @@ The hero content is embedded in `assets/hero-banner.png`.
 
 # DIVIDER
 
-🌿 Building Better Systems      ✦      💡 Solving Real Problems      ✦      📖 Always Learning      ✦      🌱 Growing With Every Build
+  🌿 Building Better Systems      ✦      💡 Solving Real Problems      ✦      📖 Always Learning      ✦      🌱 Growing With Every Build  
 
 ---
 

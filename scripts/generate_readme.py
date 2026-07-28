@@ -281,28 +281,28 @@ def build_connect_links(connect_text):
     if "linkedin" in links:
         li = links["linkedin"]
         html_parts.append(f'''
-  <tr valign="middle">
-    <td width="24" align="center" style="border: 0; padding: 4px 0;"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/linkedin.png" width="16" height="16" alt="LinkedIn"></td>
-    <td style="border: 0; padding: 4px 10px;"><a href="https://linkedin.com/in/{li}">{li}</a></td>
-  </tr>
+<p style="margin: 0 0 10px 0;">
+  <img src="https://img.icons8.com/ios-glyphs/30/ffffff/linkedin.png" width="16" height="16" style="vertical-align: middle; margin-right: 8px;">
+  <a href="https://linkedin.com/in/{li}" style="vertical-align: middle;">{li}</a>
+</p>
         '''.strip())
     # Email
     if "email" in links:
         em = links["email"]
         html_parts.append(f'''
-  <tr valign="middle">
-    <td width="24" align="center" style="border: 0; padding: 4px 0;"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/new-post.png" width="16" height="16" alt="Email"></td>
-    <td style="border: 0; padding: 4px 10px;"><a href="mailto:{em}">{em}</a></td>
-  </tr>
+<p style="margin: 0 0 10px 0;">
+  <img src="https://img.icons8.com/ios-glyphs/30/ffffff/new-post.png" width="16" height="16" style="vertical-align: middle; margin-right: 8px;">
+  <a href="mailto:{em}" style="vertical-align: middle;">{em}</a>
+</p>
         '''.strip())
     # GitHub
     if "github" in links:
         gh = links["github"]
         html_parts.append(f'''
-  <tr valign="middle">
-    <td width="24" align="center" style="border: 0; padding: 4px 0;"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/github.png" width="16" height="16" alt="GitHub"></td>
-    <td style="border: 0; padding: 4px 10px;"><a href="https://github.com/{gh}">{gh}</a></td>
-  </tr>
+<p style="margin: 0 0 10px 0;">
+  <img src="https://img.icons8.com/ios-glyphs/30/ffffff/github.png" width="16" height="16" style="vertical-align: middle; margin-right: 8px;">
+  <a href="https://github.com/{gh}" style="vertical-align: middle;">{gh}</a>
+</p>
         '''.strip())
     # Portfolio
     if "portfolio" in links:
@@ -314,10 +314,10 @@ def build_connect_links(connect_text):
             pf_url = f"https://{pf}"
             pf_display = pf
         html_parts.append(f'''
-  <tr valign="middle">
-    <td width="24" align="center" style="border: 0; padding: 4px 0;"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/globe.png" width="16" height="16" alt="Portfolio"></td>
-    <td style="border: 0; padding: 4px 10px;"><a href="{pf_url}">{pf_display}</a></td>
-  </tr>
+<p style="margin: 0 0 10px 0;">
+  <img src="https://img.icons8.com/ios-glyphs/30/ffffff/globe.png" width="16" height="16" style="vertical-align: middle; margin-right: 8px;">
+  <a href="{pf_url}" style="vertical-align: middle;">{pf_display}</a>
+</p>
         '''.strip())
             
     return "\n".join(html_parts)
@@ -374,7 +374,7 @@ def main():
     # 8. Let's Connect
     connect_text = sections["LET'S CONNECT"]
     
-    # Build HTML for Right Now
+    # Build HTML for Right Now (Simple blocks, no nested tables to avoid borders)
     right_now_html = []
     for title, content in right_now_subs:
         icon = "🌱"
@@ -389,13 +389,8 @@ def main():
             
         content_html = markdown_to_html(content)
         right_now_html.append(f'''
-  <tr valign="top">
-    <td width="8%" style="padding: 0 0 16px 0; border: 0; font-size: 16px;">{icon}</td>
-    <td style="padding: 0 0 16px 8px; border: 0;">
-      <strong>{title}</strong><br>
-      {content_html}
-    </td>
-  </tr>
+<p style="margin: 0 0 6px 0;">{icon} <strong>{title}</strong></p>
+{content_html}
         '''.strip())
     right_now_rows = "\n".join(right_now_html)
     
@@ -427,24 +422,24 @@ def main():
         '''.strip())
     projects_content = "".join(projects_html)
     
-    # Build HTML for Major Milestones (pure list, aligned timeline)
+    # Build HTML for Major Milestones (pure list, aligned timeline with zero borders)
     milestones_rows = []
     for year, desc in milestone_entries:
         desc_html = markdown_to_html(desc)
         if year.lower() == "looking forward":
             milestones_rows.append(f'''
-  <tr>
-    <td valign="top" width="15%" style="padding: 6px 16px; border: 0; color: #8b949e;"><strong>🚀</strong></td>
-    <td valign="top" style="padding: 6px 0; border: 0; color: #3e4a3c; text-align: center;">✦</td>
-    <td valign="top" style="padding: 6px 16px; border: 0;"><strong>Looking Forward:</strong> {desc_html}</td>
+  <tr style="border: 0 !important;">
+    <td valign="top" width="15%" style="padding: 6px 16px 6px 0; border: 0 !important; color: #8b949e;"><strong>🚀</strong></td>
+    <td valign="top" style="padding: 6px 12px; border: 0 !important; color: #3e4a3c; text-align: center;">✦</td>
+    <td valign="top" style="padding: 6px 0; border: 0 !important;"><strong>Looking Forward:</strong> {desc_html}</td>
   </tr>
             '''.strip())
         else:
             milestones_rows.append(f'''
-  <tr>
-    <td valign="top" width="15%" style="padding: 6px 16px; border: 0; color: #8b949e;"><strong>{year}</strong></td>
-    <td valign="top" style="padding: 6px 0; border: 0; color: #3e4a3c; text-align: center;">✦</td>
-    <td valign="top" style="padding: 6px 16px; border: 0;">{desc_html}</td>
+  <tr style="border: 0 !important;">
+    <td valign="top" width="15%" style="padding: 6px 16px 6px 0; border: 0 !important; color: #8b949e;"><strong>{year}</strong></td>
+    <td valign="top" style="padding: 6px 12px; border: 0 !important; color: #3e4a3c; text-align: center;">✦</td>
+    <td valign="top" style="padding: 6px 0; border: 0 !important;">{desc_html}</td>
   </tr>
             '''.strip())
     milestone_rows = "\n".join(milestones_rows)
@@ -464,67 +459,57 @@ Generator: scripts/generate_readme.py
 <div align="center">
   <img src="assets/hero-banner.png" width="100%" alt="Hero Banner">
 </div>
-<table width="100%" style="border-collapse: collapse; border: 1px solid #3e382b; border-radius: 6px; background-color: #000000; margin-top: 16px; margin-bottom: 16px;">
-  <tr>
-    <td align="center" style="padding: 10px; border: 0;">
+<table width="100%" style="border-collapse: collapse; border: 1px solid #3e382b !important; border-radius: 6px; background-color: #000000; margin-top: 16px; margin-bottom: 16px;">
+  <tr style="border: 0 !important;">
+    <td align="center" style="padding: 10px; border: 0 !important;">
       {divider_text}
     </td>
   </tr>
 </table>
 <!-- Row 1: Rooted In, Right Now, Best Work So Far (Equal Heights Layout) -->
-<table width="100%" style="border-collapse: collapse; margin-bottom: 16px;">
-  <tr valign="top">
+<table width="100%" style="border-collapse: collapse; border: 0 !important; margin-bottom: 16px;">
+  <tr valign="top" style="border: 0 !important;">
     <!-- Rooted In Card -->
-    <td width="33.1%" style="border: 1px solid #3e382b; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
+    <td width="33.1%" style="border: 1px solid #3e382b !important; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
       <h3 style="margin: 0 0 16px 0;">🌱 Rooted In</h3>{rooted_in_text}
     </td>
     <!-- Spacer -->
-    <td width="0.2%"></td>
+    <td width="0.2%" style="border: 0 !important; padding: 0;"></td>
     <!-- Right Now Card -->
-    <td width="33.1%" style="border: 1px solid #3e382b; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
-      <table width="100%">
-        <tr>
-          <td colspan="2" style="padding: 0 0 16px 0; border: 0;">
-            <h3 style="margin: 0;">🚀 Right Now</h3>
-          </td>
-        </tr>
-        {right_now_rows}
-      </table>
+    <td width="33.1%" style="border: 1px solid #3e382b !important; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
+      <h3 style="margin: 0 0 16px 0;">🚀 Right Now</h3>
+      {right_now_rows}
     </td>
     <!-- Spacer -->
-    <td width="0.2%"></td>
+    <td width="0.2%" style="border: 0 !important; padding: 0;"></td>
     <!-- Best Work So Far Card -->
-    <td width="33.1%" style="border: 1px solid #3e382b; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
+    <td width="33.1%" style="border: 1px solid #3e382b !important; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
       <h3 style="margin: 0 0 16px 0;">🌸 Best Work So Far</h3>{projects_content}
     </td>
   </tr>
 </table>
 <!-- Row 2: Major Milestones, Tech Stack (Equal Heights Layout) -->
-<table width="100%" style="border-collapse: collapse; margin-bottom: 16px;">
-  <tr valign="top">
+<table width="100%" style="border-collapse: collapse; border: 0 !important; margin-bottom: 16px;">
+  <tr valign="top" style="border: 0 !important;">
     <!-- Major Milestones Card -->
-    <td width="59.9%" style="border: 1px solid #3e382b; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
-      <table width="100%">
-        <tr>
-          <td colspan="3" style="padding: 0 0 16px 0; border: 0;">
-            <h3 style="margin: 0;">🌙 Major Milestones</h3>
-          </td>
-        </tr>
+    <td width="59.9%" style="border: 1px solid #3e382b !important; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
+      <h3 style="margin: 0 0 16px 0;">🌙 Major Milestones</h3>
+      <table width="100%" style="border-collapse: collapse; border: 0 !important;">
         {milestone_rows}
       </table>
     </td>
     <!-- Spacer -->
-    <td width="0.2%"></td>
+    <td width="0.2%" style="border: 0 !important; padding: 0;"></td>
     <!-- Tech Stack Card -->
-    <td width="39.9%" style="border: 1px solid #3e382b; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
+    <td width="39.9%" style="border: 1px solid #3e382b !important; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
       <h3 style="margin: 0 0 16px 0;">⚙️ Tech Stack</h3>{tech_stack_content}
     </td>
   </tr>
 </table>
 <!-- GitHub Activity (Full Width Card) -->
-<table width="100%" style="border-collapse: collapse; border: 1px solid #3e382b; border-radius: 6px; background-color: #000000; margin-bottom: 16px;">
-  <tr>
-    <td style="padding: 16px; border: 0;">
+<table width="100%" style="border-collapse: collapse; border: 1px solid #3e382b !important; border-radius: 6px; background-color: #000000; margin-bottom: 16px;">
+  <tr style="border: 0 !important;">
+    <td style="padding: 16px; border: 0 !important;">
       <h3 style="margin: 0 0 16px 0;">📊 GitHub Activity</h3>
       <div align="center">
         <img src="https://github-readme-stats.vercel.app/api?username=Farheen-H-S&show_icons=true&theme=react&hide_border=true" alt="GitHub Stats"><br><br>
@@ -534,33 +519,19 @@ Generator: scripts/generate_readme.py
   </tr>
 </table>
 <!-- Final Row: Looking Ahead, Let's Connect (Equal Heights Layout) -->
-<table width="100%" style="border-collapse: collapse;">
-  <tr valign="top">
+<table width="100%" style="border-collapse: collapse; border: 0 !important;">
+  <tr valign="top" style="border: 0 !important;">
     <!-- Looking Ahead Card -->
-    <td width="49.9%" style="border: 1px solid #3e382b; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
+    <td width="49.9%" style="border: 1px solid #3e382b !important; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
       <h3 style="margin: 0 0 16px 0;">★ Looking Ahead</h3>{looking_ahead_text}
     </td>
     <!-- Spacer -->
-    <td width="0.2%"></td>
+    <td width="0.2%" style="border: 0 !important; padding: 0;"></td>
     <!-- Let's Connect Card -->
-    <td width="49.9%" style="border: 1px solid #3e382b; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
-      <table width="100%">
-        <tr>
-          <td colspan="2" style="padding: 0 0 16px 0; border: 0;">
-            <h3 style="margin: 0;">🌱 Let's Connect</h3>
-          </td>
-        </tr>
-        <tr valign="middle">
-          <td width="55%" style="padding: 0; border: 0;">
-            <table width="100%" style="border-collapse: collapse;">
-              {connect_content_html}
-            </table>
-          </td>
-          <td width="45%" align="right" style="padding: 0; border: 0;">
-            <img src="assets/lets-connect-flower.png" width="100%" alt="Connect Floral Decoration">
-          </td>
-        </tr>
-      </table>
+    <td width="49.9%" style="border: 1px solid #3e382b !important; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
+      <img src="assets/lets-connect-flower.png" align="right" width="150" style="margin-left: 12px; margin-top: 10px;" alt="Connect Flower">
+      <h3 style="margin: 0 0 16px 0;">🌱 Let's Connect</h3>
+      {connect_content_html}
     </td>
   </tr>
 </table>
