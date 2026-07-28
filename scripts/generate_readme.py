@@ -221,6 +221,7 @@ def parse_tech_stack(text):
     if items:
         categories.append((current_category, items))
         
+        
     return categories
 
 def make_project_badges(tech_stack_text):
@@ -466,42 +467,36 @@ Generator: scripts/generate_readme.py
     </td>
   </tr>
 </table>
-<!-- Row 1: Rooted In, Right Now, Best Work So Far (Equal Heights Layout) -->
-<table width="100%" style="border-collapse: collapse; border: 0 !important; margin-bottom: 16px;">
+<!-- Row 1: Rooted In, Right Now, Best Work So Far (Unified Equal Heights Layout) -->
+<table width="100%" style="border-collapse: collapse; border: 1px solid #3e382b !important; border-radius: 6px; background-color: #000000; margin-bottom: 16px;">
   <tr valign="top" style="border: 0 !important;">
-    <!-- Rooted In Card -->
-    <td width="33.1%" style="border: 1px solid #3e382b !important; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
+    <!-- Rooted In Column -->
+    <td width="33.3%" style="padding: 16px; border: 0 !important; border-right: 1px solid #3e382b !important;" valign="top">
       <h3 style="margin: 0 0 16px 0;">🌱 Rooted In</h3>{rooted_in_text}
     </td>
-    <!-- Spacer -->
-    <td width="0.2%" style="border: 0 !important; padding: 0;"></td>
-    <!-- Right Now Card -->
-    <td width="33.1%" style="border: 1px solid #3e382b !important; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
+    <!-- Right Now Column -->
+    <td width="33.3%" style="padding: 16px; border: 0 !important; border-right: 1px solid #3e382b !important;" valign="top">
       <h3 style="margin: 0 0 16px 0;">🚀 Right Now</h3>
       {right_now_rows}
     </td>
-    <!-- Spacer -->
-    <td width="0.2%" style="border: 0 !important; padding: 0;"></td>
-    <!-- Best Work So Far Card -->
-    <td width="33.1%" style="border: 1px solid #3e382b !important; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
+    <!-- Best Work So Far Column -->
+    <td width="33.4%" style="padding: 16px; border: 0 !important;" valign="top">
       <h3 style="margin: 0 0 16px 0;">🌸 Best Work So Far</h3>{projects_content}
     </td>
   </tr>
 </table>
-<!-- Row 2: Major Milestones, Tech Stack (Equal Heights Layout) -->
-<table width="100%" style="border-collapse: collapse; border: 0 !important; margin-bottom: 16px;">
+<!-- Row 2: Major Milestones, Tech Stack (Unified Equal Heights Layout) -->
+<table width="100%" style="border-collapse: collapse; border: 1px solid #3e382b !important; border-radius: 6px; background-color: #000000; margin-bottom: 16px;">
   <tr valign="top" style="border: 0 !important;">
-    <!-- Major Milestones Card -->
-    <td width="59.9%" style="border: 1px solid #3e382b !important; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
+    <!-- Major Milestones Column -->
+    <td width="60%" style="padding: 16px; border: 0 !important; border-right: 1px solid #3e382b !important;" valign="top">
       <h3 style="margin: 0 0 16px 0;">🌙 Major Milestones</h3>
       <table width="100%" style="border-collapse: collapse; border: 0 !important;">
         {milestone_rows}
       </table>
     </td>
-    <!-- Spacer -->
-    <td width="0.2%" style="border: 0 !important; padding: 0;"></td>
-    <!-- Tech Stack Card -->
-    <td width="39.9%" style="border: 1px solid #3e382b !important; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
+    <!-- Tech Stack Column -->
+    <td width="40%" style="padding: 16px; border: 0 !important;" valign="top">
       <h3 style="margin: 0 0 16px 0;">⚙️ Tech Stack</h3>{tech_stack_content}
     </td>
   </tr>
@@ -518,17 +513,15 @@ Generator: scripts/generate_readme.py
     </td>
   </tr>
 </table>
-<!-- Final Row: Looking Ahead, Let's Connect (Equal Heights Layout) -->
-<table width="100%" style="border-collapse: collapse; border: 0 !important;">
+<!-- Final Row: Looking Ahead, Let's Connect (Unified Equal Heights Layout) -->
+<table width="100%" style="border-collapse: collapse; border: 1px solid #3e382b !important; border-radius: 6px; background-color: #000000;">
   <tr valign="top" style="border: 0 !important;">
-    <!-- Looking Ahead Card -->
-    <td width="49.9%" style="border: 1px solid #3e382b !important; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
+    <!-- Looking Ahead Column -->
+    <td width="50%" style="padding: 16px; border: 0 !important; border-right: 1px solid #3e382b !important;" valign="top">
       <h3 style="margin: 0 0 16px 0;">★ Looking Ahead</h3>{looking_ahead_text}
     </td>
-    <!-- Spacer -->
-    <td width="0.2%" style="border: 0 !important; padding: 0;"></td>
-    <!-- Let's Connect Card -->
-    <td width="49.9%" style="border: 1px solid #3e382b !important; border-radius: 6px; padding: 16px; background-color: #000000;" valign="top">
+    <!-- Let's Connect Column -->
+    <td width="50%" style="padding: 16px; border: 0 !important;" valign="top">
       <img src="assets/lets-connect-flower.png" align="right" width="150" style="margin-left: 12px; margin-top: 10px;" alt="Connect Flower">
       <h3 style="margin: 0 0 16px 0;">🌱 Let's Connect</h3>
       {connect_content_html}
