@@ -21,11 +21,11 @@ The hero content is embedded in `assets/hero-banner.png`.
 
 # ROOTED IN
 
-I enjoy building systems that solve real problems and create meaningful impact.
+Building systems that solve real problems.
 
-I'm passionate about building scalable, maintainable software grounded in strong engineering foundations.
+Strong engineering foundations over quick solutions.
 
-I believe good engineering values clarity, simplicity, continuous learning, and long-term thinking over short-term trends.
+Clarity, simplicity, continuous learning, and long-term thinking.
 
 ---
 
@@ -36,6 +36,7 @@ I believe good engineering values clarity, simplicity, continuous learning, and 
 - TestSeries
 - Website for ISF Switchgear Components
 
+
 ## Learning
 
 - JavaScript
@@ -43,6 +44,7 @@ I believe good engineering values clarity, simplicity, continuous learning, and 
 - Django REST Framework
 - Bash
 - Advanced Database Concepts
+
 
 ## Exploring
 
@@ -58,7 +60,7 @@ I believe good engineering values clarity, simplicity, continuous learning, and 
 
 ## TestSeries
 
-Platform for CA Final students to generate personalized practice papers from ICAI RTPs and other study resources.
+Platform for generating personalized CA Final practice papers from ICAI RTPs and study resources.
 
 ### Tech Stack
 
@@ -74,7 +76,7 @@ Farheen-H-S/TestSeries
 
 ## Outcome Based Education (OBE) Tracking System
 
-Role-based web application for Outcome Based Education attainment, reporting, and analytics.
+Role-based web app for Outcome Based Education attainment, reporting, and analytics.
 
 ### Status
 
@@ -98,31 +100,31 @@ Farheen-H-S/OBE-TRACKING-SYSTEM
 
 ## 2023
 
-Began my journey in Computer Engineering.
+Started my Computer Engineering journey.
 
 ---
 
 ## 2024
 
-Built a strong foundation in Python and web development.
+Built strong Python and web development fundamentals.
 
 ---
 
 ## 2025
 
-Began backend development with Django.
+Transitioned into backend development with Django.
 
-Started development of the Outcome Based Education Tracking System.
+Started building the OBE Tracking System.
 
 ---
 
 ## 2026
 
-Published research paper in IJSDR (Vol. 11, Issue 1, Jan 2026).
-
-Successfully completed and handed over the OBE Tracking System.
+Published my first research paper (IJSDR, Vol. 11, Issue 1, Jan 2026).
 
 Graduated with a Diploma in Computer Engineering.
+
+Successfully handed over the OBE Tracking System.
 
 ---
 
@@ -148,8 +150,9 @@ Building software that creates meaningful impact.
 
 ---
 
-## Currently Exploring
+## Growing Into
 
+- Bash
 - Docker
 - Nginx
 - Redis
@@ -167,10 +170,10 @@ No manual content.
 
 # LOOKING AHEAD
 
-- Building systems that solve real-world problems
-- Full-stack engineering
-- DevOps & Cloud
-- Open source contributions
+- Building software that lasts.
+- Learning distributed systems.
+- Contributing to open source.
+- Growing into backend and systems engineering.
 
 ---
 
