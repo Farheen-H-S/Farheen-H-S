@@ -6,7 +6,7 @@ Generator: scripts/generate_readme.py
 <div align="center">
   <img src="assets/hero-banner.png" width="100%" alt="Hero Banner">
 </div>
-<p align="center" style="margin-top: 16px; margin-bottom: 16px;">
+<p align="center" style="margin-top: 24px; margin-bottom: 16px;">
   🌿 Building Better Systems&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💡 Solving Real Problems&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📖 Always Learning&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🌱 Growing With Every Build
 </p>
 <!-- Row 1: Rooted In, Right Now, Best Work So Far (Unified Equal Heights Layout) -->
@@ -64,7 +64,7 @@ Role-based web application for Outcome Based Education attainment, reporting, an
     <td style="padding: 16px; border: 0 !important;">
       <h3 style="margin: 0 0 16px 0;">📊 GitHub Activity</h3>
       <div align="center">
-        <img src="https://github-readme-stats-anuraghazra.vercel.app/api?username=Farheen-H-S&show_icons=true&theme=react&hide_border=true" alt="GitHub Stats"><br><br>
+        <img src="https://github-readme-stats.vercel.app/api?username=Farheen-H-S&show_icons=true&theme=react&hide_border=true&count_private=true" alt="GitHub Stats"><br><br>
         <img src="https://github-readme-activity-graph.vercel.app/graph?username=Farheen-H-S&theme=react&hide_border=true&area=true" width="100%" alt="Activity Graph">
       </div>
     </td>
