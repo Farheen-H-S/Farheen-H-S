@@ -9,7 +9,7 @@ Generator: scripts/generate_readme.py
 <table width="100%" style="border-collapse: collapse; border: 1px solid #3e382b; border-radius: 6px; background-color: #000000; margin-top: 16px; margin-bottom: 16px;">
   <tr>
     <td align="center" style="padding: 10px; border: 0;">
-      <p style="margin: 0 0 10px 0;">🌿 Building Better Systems&nbsp;&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;&nbsp;💡 Solving Real Problems&nbsp;&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;&nbsp;📖 Always Learning&nbsp;&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;&nbsp;🌱 Growing With Every Build</p>
+      <p style="margin: 0 0 10px 0;">🌿 Building Better Systems&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💡 Solving Real Problems&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📖 Always Learning&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🌱 Growing With Every Build</p>
     </td>
   </tr>
 </table>
