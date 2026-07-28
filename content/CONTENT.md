@@ -15,7 +15,7 @@ The hero content is embedded in `assets/hero-banner.png`.
 
 # DIVIDER
 
-🌿 Building Better Systems ✦ 💡 Solving Real Problems ✦ 📖 Always Learning ✦ 🌱 Growing With Every Build
+🌿 Building Better Systems         ✦         💡 Solving Real Problems         ✦         📖 Always Learning         ✦         🌱 Growing With Every Build
 
 ---
 
@@ -134,46 +134,17 @@ Building software that creates meaningful impact.
 
 # TECH STACK
 
-## Languages
-
 - Python
 - JavaScript
 - HTML
 - CSS
-- SQL
-
----
-
-## Backend
-
 - Django
-- Django REST Framework
-- REST APIs
-- JWT Authentication
-
----
-
-## Frontend
-
 - React
 - Bootstrap
-
----
-
-## Databases
-
 - PostgreSQL
-- SQLite
 - MySQL
-
----
-
-## Tools
-
 - Git
 - GitHub
-- VS Code
-- PyCharm
 
 ---
 
