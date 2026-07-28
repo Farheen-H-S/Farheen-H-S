@@ -64,7 +64,6 @@ Role-based web application for Outcome Based Education attainment, reporting, an
     <td style="padding: 16px; border: 0 !important;">
       <h3 style="margin: 0 0 16px 0;">📊 GitHub Activity</h3>
       <div align="center">
-        <img src="https://github-readme-stats.vercel.app/api?username=Farheen-H-S&show_icons=true&theme=react&hide_border=true&count_private=true" alt="GitHub Stats"><br><br>
         <img src="https://github-readme-activity-graph.vercel.app/graph?username=Farheen-H-S&theme=react&hide_border=true&area=true" width="100%" alt="Activity Graph">
       </div>
     </td>
