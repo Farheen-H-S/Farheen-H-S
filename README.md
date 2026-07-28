@@ -46,21 +46,11 @@ Role-based web application for Outcome Based Education attainment, reporting, an
     <!-- Major Milestones Column -->
     <td width="60%" style="padding: 16px; border: 0 !important; border-right: 1px solid #3e382b !important;" valign="top">
       <h3 style="margin: 0 0 16px 0;">🌙 Major Milestones</h3>
-      <div style="margin: 0 0 24px 0; line-height: 1.6;">
-  <strong style="color: #ffffff; font-size: 15px;">2023</strong> &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; <div style="margin-bottom: 6px; line-height: 1.4;">Began my journey in Computer Engineering.</div>
-</div>
-<div style="margin: 0 0 24px 0; line-height: 1.6;">
-  <strong style="color: #ffffff; font-size: 15px;">2024</strong> &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; <div style="margin-bottom: 6px; line-height: 1.4;">Built a strong foundation in Python and web development.</div>
-</div>
-<div style="margin: 0 0 24px 0; line-height: 1.6;">
-  <strong style="color: #ffffff; font-size: 15px;">2025</strong> &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; <div style="margin-bottom: 6px; line-height: 1.4;">Began backend development with Django.</div><div style="margin-bottom: 6px; line-height: 1.4;">Started development of the Outcome Based Education Tracking System.</div>
-</div>
-<div style="margin: 0 0 24px 0; line-height: 1.6;">
-  <strong style="color: #ffffff; font-size: 15px;">2026</strong> &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; <div style="margin-bottom: 6px; line-height: 1.4;">Published research paper in IJSDR (Vol. 11, Issue 1, Jan 2026).</div><div style="margin-bottom: 6px; line-height: 1.4;">Successfully completed and handed over the OBE Tracking System.</div><div style="margin-bottom: 6px; line-height: 1.4;">Graduated with a Diploma in Computer Engineering.</div>
-</div>
-<div style="margin: 0 0 24px 0; line-height: 1.6;">
-  <strong style="color: #ffffff; font-size: 15px;">🚀 Looking Forward</strong> &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; <div style="margin-bottom: 6px; line-height: 1.4;">Building software that creates meaningful impact.</div>
-</div>
+      <strong style="color: #ffffff; font-size: 15px;">2023</strong> &nbsp;✦<br><div style="margin-bottom: 4px; line-height: 1.5;">Began my journey in Computer Engineering.</div><br>
+<strong style="color: #ffffff; font-size: 15px;">2024</strong> &nbsp;✦<br><div style="margin-bottom: 4px; line-height: 1.5;">Built a strong foundation in Python and web development.</div><br>
+<strong style="color: #ffffff; font-size: 15px;">2025</strong> &nbsp;✦<br><div style="margin-bottom: 4px; line-height: 1.5;">Began backend development with Django.</div><div style="margin-bottom: 4px; line-height: 1.5;">Started development of the Outcome Based Education Tracking System.</div><br>
+<strong style="color: #ffffff; font-size: 15px;">2026</strong> &nbsp;✦<br><div style="margin-bottom: 4px; line-height: 1.5;">Published research paper in IJSDR (Vol. 11, Issue 1, Jan 2026).</div><div style="margin-bottom: 4px; line-height: 1.5;">Successfully completed and handed over the OBE Tracking System.</div><div style="margin-bottom: 4px; line-height: 1.5;">Graduated with a Diploma in Computer Engineering.</div><br>
+<strong style="color: #ffffff; font-size: 15px;">🚀 Looking Forward</strong> &nbsp;✦<br><div style="margin-bottom: 4px; line-height: 1.5;">Building software that creates meaningful impact.</div>
     </td>
     <!-- Tech Stack Column -->
     <td width="40%" style="padding: 16px; border: 0 !important;" valign="top">

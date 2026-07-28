@@ -430,28 +430,24 @@ def main():
 <br>
         '''.strip())
     projects_content = "".join(projects_html)
-    
-    # Build HTML for Major Milestones (tight div-based paragraphs to avoid GFM override margins)
+    # Structure: year+sparkle on its own block line, tight content below, <br> gap between years
     milestones_html = []
     for year, desc in milestone_entries:
         desc_html = markdown_to_html(desc)
-        # Convert default paragraph tags to tight divs for milestones to group items of the same year
-        desc_html = desc_html.replace('<p style="margin: 0 0 10px 0;">', '<div style="margin-bottom: 6px; line-height: 1.4;">')
+        # Convert paragraph tags to tight divs so same-year items sit close together
+        desc_html = desc_html.replace('<p style="margin: 0 0 10px 0;">', '<div style="margin-bottom: 4px; line-height: 1.5;">')
         desc_html = desc_html.replace('</p>', '</div>')
         
         if year.lower() == "looking forward":
-            milestones_html.append(f'''
-<div style="margin: 0 0 24px 0; line-height: 1.6;">
-  <strong style="color: #ffffff; font-size: 15px;">🚀 Looking Forward</strong> &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; {desc_html}
-</div>
-            '''.strip())
+            milestones_html.append(
+                f'<strong style="color: #ffffff; font-size: 15px;">🚀 Looking Forward</strong> &nbsp;✦<br>{desc_html}'
+            )
         else:
-            milestones_html.append(f'''
-<div style="margin: 0 0 24px 0; line-height: 1.6;">
-  <strong style="color: #ffffff; font-size: 15px;">{year}</strong> &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; {desc_html}
-</div>
-            '''.strip())
-    milestone_rows = "\n".join(milestones_html)
+            milestones_html.append(
+                f'<strong style="color: #ffffff; font-size: 15px;">{year}</strong> &nbsp;✦<br>{desc_html}'
+            )
+    # Join year blocks with a <br> to create visible spacing between years on GitHub
+    milestone_rows = "<br>\n".join(milestones_html)
     
     # Build Tech Stack
     tech_stack_content = build_tech_stack_html(tech_categories)
