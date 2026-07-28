@@ -293,6 +293,7 @@ def build_connect_links(connect_text):
   <a href="https://linkedin.com/in/{li}" style="vertical-align: middle;">{li}</a>
 </p>
         '''.strip())
+    
     # Email
     if "email" in links:
         em = links["email"]
@@ -302,6 +303,10 @@ def build_connect_links(connect_text):
   <a href="mailto:{em}" style="vertical-align: middle;">{em}</a>
 </p>
         '''.strip())
+    
+    # Flower anchored after Email — floats right starting at GitHub row
+    html_parts.append('<img src="assets/lets-connect-flower.png" align="right" width="35%" alt="Connect Flower">')
+    
     # GitHub
     if "github" in links:
         gh = links["github"]
@@ -520,7 +525,6 @@ Generator: scripts/generate_readme.py
     </td>
     <!-- Let's Connect Column -->
     <td width="50%" style="padding: 16px; border: 0 !important;" valign="top">
-      <img src="assets/lets-connect-flower.png" align="right" width="150" style="margin-left: 12px; margin-top: 10px;" alt="Connect Flower">
       <h3 style="margin: 0 0 16px 0;">🌱 Let's Connect</h3>
       {connect_content_html}
     </td>

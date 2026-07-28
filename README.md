@@ -79,7 +79,6 @@ Role-based web application for Outcome Based Education attainment, reporting, an
     </td>
     <!-- Let's Connect Column -->
     <td width="50%" style="padding: 16px; border: 0 !important;" valign="top">
-      <img src="assets/lets-connect-flower.png" align="right" width="150" style="margin-left: 12px; margin-top: 10px;" alt="Connect Flower">
       <h3 style="margin: 0 0 16px 0;">🌱 Let's Connect</h3>
       <p style="margin: 0 0 10px 0;">
   <img src="https://img.icons8.com/ios-glyphs/30/ffffff/linkedin.png" width="16" height="16" style="vertical-align: middle; margin-right: 8px;">
@@ -89,6 +88,7 @@ Role-based web application for Outcome Based Education attainment, reporting, an
   <img src="https://img.icons8.com/ios-glyphs/30/ffffff/new-post.png" width="16" height="16" style="vertical-align: middle; margin-right: 8px;">
   <a href="mailto:farheenhmshaikh@gmail.com" style="vertical-align: middle;">farheenhmshaikh@gmail.com</a>
 </p>
+<img src="assets/lets-connect-flower.png" align="right" width="35%" alt="Connect Flower">
 <p style="margin: 0 0 10px 0;">
   <img src="https://img.icons8.com/ios-glyphs/30/ffffff/github.png" width="16" height="16" style="vertical-align: middle; margin-right: 8px;">
   <a href="https://github.com/Farheen-H-S" style="vertical-align: middle;">Farheen-H-S</a>
