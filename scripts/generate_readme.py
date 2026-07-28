@@ -5,10 +5,10 @@ import sys
 # Mappings of technology name to Devicon SVGs
 DEVICON_MAP = {
     "python": "python/python-original.svg",
-    "django": "django/django-plain.svg",
-    "django rest framework": "django/django-plain.svg",
-    "django rest framework (drf)": "django/django-plain.svg",
-    "drf": "django/django-plain.svg",
+    "django": "https://cdn.simpleicons.org/django/white",
+    "django rest framework": "https://cdn.simpleicons.org/django/white",
+    "django rest framework (drf)": "https://cdn.simpleicons.org/django/white",
+    "drf": "https://cdn.simpleicons.org/django/white",
     "react": "react/react-original.svg",
     "javascript": "javascript/javascript-original.svg",
     "typescript": "typescript/typescript-original.svg",
@@ -19,9 +19,9 @@ DEVICON_MAP = {
     "vscode": "vscode/vscode-original.svg",
     "pycharm": "pycharm/pycharm-original.svg",
     "docker": "docker/docker-original.svg",
-    "nginx": "nginx/nginx-original.svg",
+    "nginx": "https://cdn.simpleicons.org/nginx/white",
     "redis": "redis/redis-original.svg",
-    "aws": "amazonwebservices/amazonwebservices-original-wordmark.svg",
+    "aws": "https://cdn.simpleicons.org/amazon-aws/FF9900",
     "html": "html5/html5-original.svg",
     "css": "css3/css3-original.svg",
     "sql": "postgresql/postgresql-original.svg",
@@ -221,7 +221,6 @@ def parse_tech_stack(text):
     if items:
         categories.append((current_category, items))
         
-        
     return categories
 
 def make_project_badges(tech_stack_text):
@@ -260,8 +259,13 @@ def build_tech_stack_html(categories):
                 
             icon_path = DEVICON_MAP.get(clean_name)
             if icon_path:
-                icon_url = f"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{icon_path}"
-                icons_html.append(f'<img src="{icon_url}" width="38" height="38" alt="{item}" title="{item}" style="margin: 5px 12px 5px 0; vertical-align: middle;">')
+                if icon_path.startswith("http"):
+                    # Direct URL (Simple Icons)
+                    icons_html.append(f'<img src="{icon_path}" width="38" height="38" alt="{item}" title="{item}" style="margin: 5px 12px 5px 0; vertical-align: middle;">')
+                else:
+                    # Devicon path
+                    icon_url = f"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{icon_path}"
+                    icons_html.append(f'<img src="{icon_url}" width="38" height="38" alt="{item}" title="{item}" style="margin: 5px 12px 5px 0; vertical-align: middle;">')
             else:
                 badge_url = f"https://img.shields.io/badge/{item.replace(' ', '%20')}-3e4a3c?style=flat-square"
                 icons_html.append(f'<img src="{badge_url}" alt="{item}" title="{item}" style="margin: 5px 12px 5px 0; vertical-align: middle;">')
@@ -349,6 +353,8 @@ def main():
     
     # 1. Divider
     divider_text = markdown_to_html(sections["DIVIDER"])
+    # Strip any outer paragraph tags added by the converter
+    divider_text = re.sub(r'^<p[^>]*>(.*)</p>$', r'\1', divider_text.strip())
     
     # 2. Rooted In
     rooted_in_text = markdown_to_html(sections["ROOTED IN"])
@@ -423,27 +429,21 @@ def main():
         '''.strip())
     projects_content = "".join(projects_html)
     
-    # Build HTML for Major Milestones (pure list, aligned timeline with zero borders)
-    milestones_rows = []
+    # Build HTML for Major Milestones (pure float-based divs, zero tables to avoid GFM borders)
+    milestones_html = []
     for year, desc in milestone_entries:
         desc_html = markdown_to_html(desc)
-        if year.lower() == "looking forward":
-            milestones_rows.append(f'''
-  <tr style="border: 0 !important;">
-    <td valign="top" width="15%" style="padding: 6px 16px 6px 0; border: 0 !important; color: #8b949e;"><strong>🚀</strong></td>
-    <td valign="top" style="padding: 6px 12px; border: 0 !important; color: #3e4a3c; text-align: center;">✦</td>
-    <td valign="top" style="padding: 6px 0; border: 0 !important;"><strong>Looking Forward:</strong> {desc_html}</td>
-  </tr>
-            '''.strip())
-        else:
-            milestones_rows.append(f'''
-  <tr style="border: 0 !important;">
-    <td valign="top" width="15%" style="padding: 6px 16px 6px 0; border: 0 !important; color: #8b949e;"><strong>{year}</strong></td>
-    <td valign="top" style="padding: 6px 12px; border: 0 !important; color: #3e4a3c; text-align: center;">✦</td>
-    <td valign="top" style="padding: 6px 0; border: 0 !important;">{desc_html}</td>
-  </tr>
-            '''.strip())
-    milestone_rows = "\n".join(milestones_rows)
+        icon = "🚀" if year.lower() == "looking forward" else year
+        milestones_html.append(f'''
+<div style="margin: 0 0 12px 0; line-height: 1.5; clear: both;">
+  <div style="float: left; width: 50px; font-weight: bold; color: #8b949e;">{icon}</div>
+  <div style="float: left; width: 30px; text-align: center; color: #3e4a3c;">✦</div>
+  <div style="overflow: hidden;">
+    {desc_html}
+  </div>
+</div>
+        '''.strip())
+    milestone_rows = "\n".join(milestones_html)
     
     # Build Tech Stack
     tech_stack_content = build_tech_stack_html(tech_categories)
@@ -460,13 +460,9 @@ Generator: scripts/generate_readme.py
 <div align="center">
   <img src="assets/hero-banner.png" width="100%" alt="Hero Banner">
 </div>
-<table width="100%" style="border-collapse: collapse; border: 1px solid #3e382b !important; border-radius: 6px; background-color: #000000; margin-top: 16px; margin-bottom: 16px;">
-  <tr style="border: 0 !important;">
-    <td align="center" style="padding: 10px; border: 0 !important;">
-      {divider_text}
-    </td>
-  </tr>
-</table>
+<p align="center" style="margin-top: 16px; margin-bottom: 16px;">
+  {divider_text}
+</p>
 <!-- Row 1: Rooted In, Right Now, Best Work So Far (Unified Equal Heights Layout) -->
 <table width="100%" style="border-collapse: collapse; border: 1px solid #3e382b !important; border-radius: 6px; background-color: #000000; margin-bottom: 16px;">
   <tr valign="top" style="border: 0 !important;">
@@ -491,9 +487,7 @@ Generator: scripts/generate_readme.py
     <!-- Major Milestones Column -->
     <td width="60%" style="padding: 16px; border: 0 !important; border-right: 1px solid #3e382b !important;" valign="top">
       <h3 style="margin: 0 0 16px 0;">🌙 Major Milestones</h3>
-      <table width="100%" style="border-collapse: collapse; border: 0 !important;">
-        {milestone_rows}
-      </table>
+      {milestone_rows}
     </td>
     <!-- Tech Stack Column -->
     <td width="40%" style="padding: 16px; border: 0 !important;" valign="top">
