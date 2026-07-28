@@ -21,7 +21,7 @@ DEVICON_MAP = {
     "docker": "docker/docker-original.svg",
     "nginx": "https://cdn.simpleicons.org/nginx/white",
     "redis": "redis/redis-original.svg",
-    "aws": "https://cdn.simpleicons.org/amazon-aws/FF9900",
+    "aws": "amazonwebservices/amazonwebservices-original-wordmark.svg",
     "html": "html5/html5-original.svg",
     "css": "css3/css3-original.svg",
     "sql": "postgresql/postgresql-original.svg",
@@ -133,7 +133,7 @@ def parse_subsections(text):
     sub_content = []
     
     for line in text.splitlines():
-        match = re.match(r"^##\s+(.+)$", line)
+        match = re.match(r"^##\s+(.+)$", line_str) if 'line_str' in locals() else re.match(r"^##\s+(.+)$", line)
         if match:
             if current_sub:
                 subsections.append((current_sub, clean_content("\n".join(sub_content))))
@@ -246,7 +246,7 @@ def build_tech_stack_html(categories):
     html_parts = []
     for category, items in categories:
         if category.strip() != "":
-            html_parts.append(f"<strong style=\"display: block; margin-top: 10px; margin-bottom: 5px;\">{category}</strong>")
+            html_parts.append(f'<strong style="display: block; margin-top: 16px; margin-bottom: 8px;">{category}</strong>')
         icons_html = []
         for item in items:
             clean_name = item.lower().strip()
@@ -254,23 +254,22 @@ def build_tech_stack_html(categories):
             # Special white logo badge for GitHub in the tech stack
             if clean_name == "github":
                 icon_url = "https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"
-                icons_html.append(f'<img src="{icon_url}" alt="{item}" title="{item}" style="margin: 5px 12px 5px 0; vertical-align: middle;">')
+                icons_html.append(f'<img src="{icon_url}" alt="{item}" title="{item}" style="margin: 0 12px 12px 0; vertical-align: middle;">')
                 continue
                 
             icon_path = DEVICON_MAP.get(clean_name)
             if icon_path:
                 if icon_path.startswith("http"):
                     # Direct URL (Simple Icons)
-                    icons_html.append(f'<img src="{icon_path}" width="38" height="38" alt="{item}" title="{item}" style="margin: 5px 12px 5px 0; vertical-align: middle;">')
+                    icons_html.append(f'<img src="{icon_path}" width="38" height="38" alt="{item}" title="{item}" style="margin: 0 12px 12px 0; vertical-align: middle;">')
                 else:
-                    # Devicon path
-                    icon_url = f"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{icon_path}"
-                    icons_html.append(f'<img src="{icon_url}" width="38" height="38" alt="{item}" title="{item}" style="margin: 5px 12px 5px 0; vertical-align: middle;">')
+                    # Devicon path (versioned with @v2.16.0 to bypass jsDelivr 50MB package limits)
+                    icon_url = f"https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/{icon_path}"
+                    icons_html.append(f'<img src="{icon_url}" width="38" height="38" alt="{item}" title="{item}" style="margin: 0 12px 12px 0; vertical-align: middle;">')
             else:
                 badge_url = f"https://img.shields.io/badge/{item.replace(' ', '%20')}-3e4a3c?style=flat-square"
-                icons_html.append(f'<img src="{badge_url}" alt="{item}" title="{item}" style="margin: 5px 12px 5px 0; vertical-align: middle;">')
-        html_parts.append("".join(icons_html))
-        html_parts.append("<br>")
+                icons_html.append(f'<img src="{badge_url}" alt="{item}" title="{item}" style="margin: 0 12px 12px 0; vertical-align: middle;">')
+        html_parts.append(f'<p style="margin: 0 0 8px 0; line-height: 1.8;">{"".join(icons_html)}</p>')
     return "".join(html_parts)
 
 def build_connect_links(connect_text):
@@ -429,20 +428,22 @@ def main():
         '''.strip())
     projects_content = "".join(projects_html)
     
-    # Build HTML for Major Milestones (pure float-based divs, zero tables to avoid GFM borders)
+    # Build HTML for Major Milestones (clean bold text with pure white color and proper 24px margins)
     milestones_html = []
     for year, desc in milestone_entries:
         desc_html = markdown_to_html(desc)
-        icon = "🚀" if year.lower() == "looking forward" else year
-        milestones_html.append(f'''
-<div style="margin: 0 0 12px 0; line-height: 1.5; clear: both;">
-  <div style="float: left; width: 50px; font-weight: bold; color: #8b949e;">{icon}</div>
-  <div style="float: left; width: 30px; text-align: center; color: #3e4a3c;">✦</div>
-  <div style="overflow: hidden;">
-    {desc_html}
-  </div>
+        if year.lower() == "looking forward":
+            milestones_html.append(f'''
+<div style="margin: 0 0 24px 0; line-height: 1.6;">
+  <strong style="color: #ffffff; font-size: 15px;">🚀 Looking Forward</strong> &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; {desc_html}
 </div>
-        '''.strip())
+            '''.strip())
+        else:
+            milestones_html.append(f'''
+<div style="margin: 0 0 24px 0; line-height: 1.6;">
+  <strong style="color: #ffffff; font-size: 15px;">{year}</strong> &nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp; {desc_html}
+</div>
+            '''.strip())
     milestone_rows = "\n".join(milestones_html)
     
     # Build Tech Stack
@@ -501,7 +502,7 @@ Generator: scripts/generate_readme.py
     <td style="padding: 16px; border: 0 !important;">
       <h3 style="margin: 0 0 16px 0;">📊 GitHub Activity</h3>
       <div align="center">
-        <img src="https://github-readme-stats.vercel.app/api?username=Farheen-H-S&show_icons=true&theme=react&hide_border=true" alt="GitHub Stats"><br><br>
+        <img src="https://github-readme-stats-anuraghazra.vercel.app/api?username=Farheen-H-S&show_icons=true&theme=react&hide_border=true" alt="GitHub Stats"><br><br>
         <img src="https://github-readme-activity-graph.vercel.app/graph?username=Farheen-H-S&theme=react&hide_border=true&area=true" width="100%" alt="Activity Graph">
       </div>
     </td>
