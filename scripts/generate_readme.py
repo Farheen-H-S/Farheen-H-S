@@ -254,22 +254,25 @@ def build_tech_stack_html(categories):
             # Special white logo badge for GitHub in the tech stack
             if clean_name == "github":
                 icon_url = "https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"
-                icons_html.append(f'<img src="{icon_url}" alt="{item}" title="{item}" style="margin: 0 12px 12px 0; vertical-align: middle;">')
+                icons_html.append(f'<img src="{icon_url}" alt="{item}" title="{item}" style="vertical-align: middle;">')
                 continue
                 
             icon_path = DEVICON_MAP.get(clean_name)
             if icon_path:
                 if icon_path.startswith("http"):
                     # Direct URL (Simple Icons)
-                    icons_html.append(f'<img src="{icon_path}" width="38" height="38" alt="{item}" title="{item}" style="margin: 0 12px 12px 0; vertical-align: middle;">')
+                    icons_html.append(f'<img src="{icon_path}" width="38" height="38" alt="{item}" title="{item}" style="vertical-align: middle;">')
                 else:
                     # Devicon path (versioned with @v2.16.0 to bypass jsDelivr 50MB package limits)
                     icon_url = f"https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/{icon_path}"
-                    icons_html.append(f'<img src="{icon_url}" width="38" height="38" alt="{item}" title="{item}" style="margin: 0 12px 12px 0; vertical-align: middle;">')
+                    icons_html.append(f'<img src="{icon_url}" width="38" height="38" alt="{item}" title="{item}" style="vertical-align: middle;">')
             else:
                 badge_url = f"https://img.shields.io/badge/{item.replace(' ', '%20')}-3e4a3c?style=flat-square"
-                icons_html.append(f'<img src="{badge_url}" alt="{item}" title="{item}" style="margin: 0 12px 12px 0; vertical-align: middle;">')
-        html_parts.append(f'<p style="margin: 0 0 8px 0; line-height: 1.8;">{"".join(icons_html)}</p>')
+                icons_html.append(f'<img src="{badge_url}" alt="{item}" title="{item}" style="vertical-align: middle;">')
+        
+        # Add non-breaking spaces for horizontal gap, and line-height on container for vertical gap
+        spaced_icons = "&nbsp;&nbsp;".join(icons_html)
+        html_parts.append(f'<p style="margin: 0 0 16px 0; line-height: 3.2;">{spaced_icons}</p>')
     return "".join(html_parts)
 
 def build_connect_links(connect_text):
@@ -428,10 +431,14 @@ def main():
         '''.strip())
     projects_content = "".join(projects_html)
     
-    # Build HTML for Major Milestones (clean bold text with pure white color and proper 24px margins)
+    # Build HTML for Major Milestones (tight div-based paragraphs to avoid GFM override margins)
     milestones_html = []
     for year, desc in milestone_entries:
         desc_html = markdown_to_html(desc)
+        # Convert default paragraph tags to tight divs for milestones to group items of the same year
+        desc_html = desc_html.replace('<p style="margin: 0 0 10px 0;">', '<div style="margin-bottom: 6px; line-height: 1.4;">')
+        desc_html = desc_html.replace('</p>', '</div>')
+        
         if year.lower() == "looking forward":
             milestones_html.append(f'''
 <div style="margin: 0 0 24px 0; line-height: 1.6;">
